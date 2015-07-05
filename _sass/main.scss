@@ -1,0 +1,135 @@
+@charset "utf-8";
+@import "normalize";
+@import "compass";
+@import "susy";
+@import "breakpoint";
+
+/*Variables*/
+$base-font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$accent-font-family: "adage-script", serif;
+
+$spacing-unit:     30px;
+
+$text-color:       #f2f1e9;
+$background-color: #bea11e;
+$link-color:       #666;
+
+//Mixins//
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+@mixin selectanimation($animation) {
+    -webkit-transition: $animation;
+    -moz-transition: $animation;
+    -ms-transition: $animation;
+    -o-transition: $animation;
+    transition: $animation;
+}
+
+// Width of the content area
+$content-width:    800px;
+
+
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+    margin: 0;
+    padding: 0;
+}
+
+/**
+ * Basic styling
+ */
+body {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-weight: 400;
+    color: $text-color;
+    background-color: $background-color;
+    -webkit-text-size-adjust: 100%;
+}
+
+/*Headers*/
+h1 {
+    font-family: $accent-font-family;
+    font-size: $base-font-size * 7.0;
+    font-weight: 300;
+    margin-bottom: -3rem;
+    text-shadow: 0px 2px 1px darken($background-color, 5%);
+}
+h2 {
+    font-family: $base-font-family;
+    font-size: $base-font-size * 3.0;
+    font-weight: 300;
+}
+
+/**
+ * Links
+ */
+a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:visited {
+        color: darken($background-color, 5%);
+    }
+
+    &:hover {
+        @include selectanimation(all 0.3s ease);
+        color: darken( $link-color, 30%);
+        text-decoration: none;
+    }
+}
+
+.site-nav {
+    @include background-opacity(#ddd, 0.5);
+    line-height: 56px;
+    padding: 2rem 0;
+    width: 100%;
+        .page-link {
+            font-weight: 600;
+            float: right;
+            line-height: $base-line-height;
+            list-style-type: none;
+            li {
+                //display: inline;
+                float: left;
+                margin-left: 2rem;
+            }
+            text-shadow: 1px 1px 2px light( $background-color, 30%);
+            // Gaps between nav items, but not on the first one
+            &:not(:first-child) {
+                margin-left: 60px;
+                }
+            }
+        }
+
+
+/**
+ * Wrapper
+ */
+.wrapper {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    //@extend %clearfix;
+
+    //@include media-query($on-laptop) {
+        //max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+        //max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+        //padding-right: $spacing-unit / 2;
+        //padding-left: $spacing-unit / 2;
+    //}
+}
