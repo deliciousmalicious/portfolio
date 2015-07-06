@@ -14,15 +14,13 @@ $accent-font-family: "adage-script", serif;
 
 $spacing-unit:     30px;
 
-$text-color:       #f2f1e9;
+$accent-color:     #e9e7d9;
+$accent-color-2:   #C3CCB9;
 $background-color: #bea11e;
-$link-color:       #666;
+$link-color:       #796612;
+$text-color:       #f2f1e9;
 
 //Mixins//
-@mixin background-opacity($color, $opacity: 0.3) {
-    background: $color; /* The Fallback */
-    background: rgba($color, $opacity);
-}
 @mixin selectanimation($animation) {
     -webkit-transition: $animation;
     -moz-transition: $animation;
@@ -60,16 +58,11 @@ body {
 
 /*Headers*/
 h1 {
+    color: $accent-color;
     font-family: $accent-font-family;
     font-size: $base-font-size * 7.0;
     font-weight: 300;
-    margin-bottom: -3rem;
-    text-shadow: 0px 2px 1px darken($background-color, 5%);
-}
-h2 {
-    font-family: $base-font-family;
-    font-size: $base-font-size * 3.0;
-    font-weight: 300;
+    text-shadow: 0px 2px 1px darken($background-color, 2%);
 }
 
 /**
@@ -84,34 +77,46 @@ a {
     }
 
     &:hover {
-        @include selectanimation(all 0.3s ease);
-        color: darken( $link-color, 30%);
+        @include selectanimation(all 0.25s ease);
+        color: darken( $link-color, 8%);
         text-decoration: none;
     }
 }
 
+.site-footer{
+    background-color: $accent-color;
+    border-top: 1px solid darken($background-color, 5%);
+    color: darken($background-color, 5%);
+    margin-top: 3rem;
+    padding: 1rem 0;
+}
+
+.site-border {
+    border-top: 10px solid $accent-color-2;
+}
+
 .site-nav {
-    @include background-opacity(#ddd, 0.5);
+    border-top: 1px solid darken($background-color, 5%);
+    border-bottom: 1px solid darken($background-color, 5%);
     line-height: 56px;
-    padding: 2rem 0;
+    margin-bottom: 3rem;
     width: 100%;
         .page-link {
-            font-weight: 600;
-            float: right;
+            font-family: $base-font-family;
+            font-size: $base-font-size * 1.2;
+            font-weight: 300;
             line-height: $base-line-height;
             list-style-type: none;
-            li {
-                //display: inline;
-                float: left;
-                margin-left: 2rem;
-            }
+            margin: 1rem 0;
+            text-align: center;
             text-shadow: 1px 1px 2px light( $background-color, 30%);
-            // Gaps between nav items, but not on the first one
-            &:not(:first-child) {
-                margin-left: 60px;
-                }
+            li {
+                display: inline;
+                margin-left: 2rem;
+                text-decoration: uppercase;
             }
         }
+}
 
 
 /**
